@@ -1,0 +1,470 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+
+    <title>New Search Requirements</title>
+    <script  src="https://code.jquery.com/jquery.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="site.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</head>
+<body>           
+
+<div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+    <div class="mdl-cell mdl-cell--12-col">
+        <h1>Random Statements</h1>
+
+        
+        <div id="SearchControls">
+            <div id="sitesSearch">
+                <label id="program-sites-search-input-label" for="program-sites-search-input">Name</label>
+                <input id="program-sites-search-input" type="text" onkeyup="filterProgramList()" placeholder="Search for site...">
+            </div>
+            <div id="citySearch">
+                <label id="program-city-search-input-label" for="program-city-search-input">City</label>
+                <input id="program-city-search-input" type="text"  placeholder="Search by city...">
+            </div>
+            <div id="stateSearch">
+                <label for="program-state-search-dropdown" id="program-state-search-dropdown-label" required>State</label>
+                <select id="program-state-search-dropdown" name="state"  data-initial="">
+                    <option value="" selected></option>
+                </select>
+            </div>
+            <div id="countrySearch">
+                <label for="program-country-search-dropdown" id="program-country-search-dropdown-label">Country</label>
+                <select id="program-country-search-dropdown" name="country"  data-initial="">
+                    <option value="" selected></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="ps-program-list mdl-list clearFloat">
+            <ul id="program-list" class="list-unstyled">
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>The waves were crashing on the shore; it was a lovely sight.,Dayton,OH</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>He ran out of money, so he had to stop playing poker.,Cincinnati,OH</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>Should we start class now, or should we wait for everyone to get here?,Cleveland,OH</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>I want more detailed information.,Dayton,OH</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>She did not cheat on the test, for it was not the right thing to do.,Cincinnati,OH</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>We have never been to Asia, nor have we visited Africa.,Cincinnati,OH</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>I think I will buy the red car, or I will lease the blue one.,Columbus,OH</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>I would have gotten the promotion, but my attendance was not good enough.,Miami,FL</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>I really want to go to work, but I am too sick to drive.,Miami,FL</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>Sometimes, all you need to do is completely make an ass of yourself and laugh it off to realise that life is not so bad after all.,Pensacola,FL</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>The lake is a long way from here.,Ocala,FL</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>This is a Japanese doll.,Bradenton,FL</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>If Purple People Eaters are real, then where do they find purple people to eat?,Pensacola,FL</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>Mary plays the piano.,Destin,FL</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>She wrote him a long letter, but he did not read it.,Montgomery,AL</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>He turned in the research paper on Friday; otherwise, he would have not passed the class.,Birmingham,AL</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>I love eating toasted cheese and tuna sandwiches.,Birmingham,AL</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>What was the person thinking when they discovered cow&apos;s milk was fine for human consumption, and why did they do it in the first place!?,Fairbanks,AK</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>She advised him to come back at once.,Fairbanks,AK</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>Two seats were vacant.,Anchorage,AK</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>I often see the time 11:11 or 12:34 on clocks.,Anchorage,AK</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>Italy is my favorite country; in fact, I plan to spend two weeks there next year.,Denver,CO</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>She works two jobs to make ends meet; at least, that was her reason for not having time to join us.,Colorado Springs,CO</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>Wow, does that work?,Indianapolis,IN</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>Writing a list of random sentences is harder than I initially thought it would be.,Kokomo,IN</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>She did her best to help him.,Richmond,IN</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>There was no ice cream in the freezer, nor did they have money to go to the store.,Bloomington,IN</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>This is the last random sentence I will be writing and I am going to stop mid-sent,Bloomington,IN</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>They got there early, and they got really good seats.,Kokomo,IN</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>Check back tomorrow; I will see if the book has arrived.,Walla Walla,WA</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>Christmas is carnage.,Seattle,WA</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>A purple pig and a green donkey flew a kite in the middle of the night and ended up sunburnt.,Seattle,WA</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>Lets all be unique together until we realise we are all the same.,Spokane,WA</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>Cats are good pets, for they are clean and are not noisy.,Tacoma,WA</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>He told us a very exciting adventure story.,Spokane,WA</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>Someone I know recently combined Maple Syrup & buttered Popcorn thinking it would taste like caramel popcorn. It did not and they do not recommend anyone else do it either.,Seattle,WA</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>Yeah, I think it is a good environment for learning English.,Boston,MA</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>She was too short to see over the fence.,South Hamilton,MA</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>The sky is clear; the stars are twinkling.,Boston,MA</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>I checked to make sure that he was still alive.,Ipswich,MA</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>Malls are great places to shop; I can find everything I need under one roof.,Boston,MA</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>The body may perhaps compensates for the loss of a true metaphysics.,Ipswich,England</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>It was getting dark, and we were not there yet.,Cardiff,Wales</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>I am counting my calories, yet I really want dessert.,Munich,Germany</span>
+                                                </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>The mysterious diary records the voice.,Bolton,EnglandA</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>A song can make or ruin a person&apos;s day if they let it get to them.,Berlin,Germany</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>I currently have 4 windows opened, and I do not know why.,Swansee,Wales</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>He said he was not there yesterday; however, many people saw him there.,Braintree,England</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>I want to buy a onesie, but I know it will not suit me.,Cardiff,Wales</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>Rock music approaches at high velocity.,London,England</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>There were white out conditions in the town; subsequently, the roads were impassable.,Munich,Germany</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>I was very proud of my nickname throughout high school but today- I could not be any different to what my nickname was.,Swansee,Wales</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>I am happy to take your donation; any amount will be greatly appreciated.,Birmingham,England</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>We need to rent a room for our party.,Berlin,Germany</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>Sometimes it is better to just walk away from things and go back to them later when you are in a better frame of mind.,Cardiff,Wales</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>Tom got a small piece of pie.,London,England</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>Sixty-Four comes asking for bread.,Munich,Germany</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>She only paints with bold colors; she does not like pastels.,Cardiff,Wales</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>Do not step on the broken glass.,Great Dunmow,England</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="ps-list-link">
+                        <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>Would you look at the mouth on that gift horse!,Ipswich,MA</span>
+                    </a>
+                </li>                
+                <li>
+                    <a href="#" class="ps-list-link">
+                            <i class="material-icons  mdl-list__item-avatar ps-list-item-avatar" aria-hidden="true">group_work</i><span>She borrowed the book from him many years ago and has not yet returned it.,Leipzig,Germany</span>
+
+                    </a>
+                </li>          
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+        $(".mdl-list__item")
+            .click(function() {
+                window.location = $(this).find("a").attr("href");
+                return false;
+            });
+
+        $(document)
+            .ready(function() {
+                var countries =  [
+                    { 
+                        "Id": 1,
+                        "Name": "England" 
+                    },
+                    { 
+                        "Id": 2,
+                        "Name": "Germany"
+                    },
+                    { 
+                        "Id": 3,
+                        "Name": "Wales"
+                    },
+                ];
+                          
+                var states =  [
+                    { 
+                        "Id": 1,
+                        "Abbreviation": "AL" 
+                    },
+                    { 
+                        "Id": 2,
+                        "Abbreviation": "AK"
+                    },
+                    { 
+                        "Id": 1,
+                        "Abbreviation": "CO" 
+                    },
+                    { 
+                        "Id": 2,
+                        "Abbreviation": "FL"
+                    },
+                    { 
+                        "Id": 1,
+                        "Abbreviation": "IN" 
+                    },
+                    { 
+                        "Id": 2,
+                        "Abbreviation": "MA"
+                    },
+                    { 
+                        "Id": 1,
+                        "Abbreviation": "OH" 
+                    },
+                    { 
+                        "Id": 2,
+                        "Abbreviation": "WA"
+                    },
+                ];
+                popIt('program-country-search-dropdown', countries);
+                popItStates('program-state-search-dropdown', states);
+
+            });
+
+        function popIt(selectId, options) {
+            console.log(options);
+            var dropdown = $('#' + selectId);
+            var initialValue = dropdown.data('initial');
+
+            $.each(options,
+                function () {
+                    dropdown.append($("<option />").val(this.Id).text(this.Name));
+                });
+
+            if (initialValue !== 0) {
+                dropdown.val(initialValue);
+            }
+        }
+
+        function popItStates(selectId, options) {
+            var dropdown = $('#' + selectId);
+            var initialValue = dropdown.data('initial');
+
+            $.each(options,
+                function () {
+                    dropdown.append($("<option />").val(this.Id).text(this.Abbreviation));
+                });
+
+            if (initialValue !== 0) {
+                dropdown.val(initialValue);
+            }
+        }
+
+        function filterProgramList() {
+            // Declare variables
+            var input, filter, ul, li, a, i;
+            input = document.getElementById('program-sites-search-input');
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("program-list");
+            li = ul.getElementsByTagName('li');
+
+            // Loop through all list items, and hide those who don't match the search query
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("span")[0];
+                if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+
+ </script>
+
+</body>
+</html>
