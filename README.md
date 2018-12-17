@@ -1,2 +1,4 @@
 # javascript-search
-Modify single text box search to handle multiple text boxes
+This exercise takes an existing imlementation of a filtering capability that allows a user to display a subset of random strings on a web page based on full-text search and modifies it to implement a more sophisticated search based on the format of the random strings.
+
+The strings are in the format <Random string>, <City>, <State or Country>. The task is to take the existing single-textbox solution and create a four-textbox solution. The textboxes are site search, city search, state search, and country search. If nothing in any of the textboxes is selected, all the random strings are displayed. If the user types anything in the site or city search, or selects a state or a country, then the display list if filtered according to the input. Input is accepted in the textboxes and dropdowns in any order.
