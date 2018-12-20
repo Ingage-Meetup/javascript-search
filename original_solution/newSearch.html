@@ -20,21 +20,21 @@
         <div id="SearchControls">
             <div id="sitesSearch">
                 <label id="program-sites-search-input-label" for="program-sites-search-input">Name</label>
-                <input id="program-sites-search-input" type="text" onkeyup="filterProgramList()" placeholder="Search for site...">
+                <input id="program-sites-search-input" type="text" onkeyup="nameChanged()" placeholder="Search for site...">
             </div>
             <div id="citySearch">
                 <label id="program-city-search-input-label" for="program-city-search-input">City</label>
-                <input id="program-city-search-input" type="text"  placeholder="Search by city...">
+                <input id="program-city-search-input" type="text" onkeyup="cityChanged()"  placeholder="Search by city...">
             </div>
             <div id="stateSearch">
                 <label for="program-state-search-dropdown" id="program-state-search-dropdown-label" required>State</label>
-                <select id="program-state-search-dropdown" name="state"  data-initial="">
+                <select id="program-state-search-dropdown" onchange="stateChanged()" name="state"  data-initial="">
                     <option value="" selected></option>
                 </select>
             </div>
             <div id="countrySearch">
                 <label for="program-country-search-dropdown" id="program-country-search-dropdown-label">Country</label>
-                <select id="program-country-search-dropdown" name="country"  data-initial="">
+                <select id="program-country-search-dropdown" onchange="countryChanged()" name="country"  data-initial="">
                     <option value="" selected></option>
                 </select>
             </div>
@@ -354,115 +354,149 @@
 </div>
 
 <script type="text/javascript">
-        $(".mdl-list__item")
-            .click(function() {
-                window.location = $(this).find("a").attr("href");
-                return false;
-            });
+    let data, states, countries;
 
-        $(document)
-            .ready(function() {
-                var countries =  [
-                    { 
-                        "Id": 1,
-                        "Name": "England" 
-                    },
-                    { 
-                        "Id": 2,
-                        "Name": "Germany"
-                    },
-                    { 
-                        "Id": 3,
-                        "Name": "Wales"
-                    },
-                ];
-                          
-                var states =  [
-                    { 
-                        "Id": 1,
-                        "Abbreviation": "AL" 
-                    },
-                    { 
-                        "Id": 2,
-                        "Abbreviation": "AK"
-                    },
-                    { 
-                        "Id": 1,
-                        "Abbreviation": "CO" 
-                    },
-                    { 
-                        "Id": 2,
-                        "Abbreviation": "FL"
-                    },
-                    { 
-                        "Id": 1,
-                        "Abbreviation": "IN" 
-                    },
-                    { 
-                        "Id": 2,
-                        "Abbreviation": "MA"
-                    },
-                    { 
-                        "Id": 1,
-                        "Abbreviation": "OH" 
-                    },
-                    { 
-                        "Id": 2,
-                        "Abbreviation": "WA"
-                    },
-                ];
-                popIt('program-country-search-dropdown', countries);
-                popItStates('program-state-search-dropdown', states);
+    states = [
+        'AL',
+        'AK',
+        'AZ',
+        'AR',
+        'CA',
+        'CO',
+        'CT',
+        'DE',
+        'FL',
+        'GA',
+        'HI',
+        'ID',
+        'IL',
+        'IN',
+        'IA',
+        'KS',
+        'KY',
+        'LA',
+        'ME',
+        'MD',
+        'MA',
+        'MI',
+        'MN',
+        'MS',
+        'MO',
+        'MT',
+        'NE',
+        'NV',
+        'NH',
+        'NJ',
+        'NM',
+        'NY',
+        'NC',
+        'ND',
+        'OH',
+        'OK',
+        'OR',
+        'PA',
+        'RI',
+        'SC',
+        'SD',
+        'TN',
+        'TX',
+        'UT',
+        'VT',
+        'VA',
+        'WA',
+        'WV',
+        'WI',
+        'WY',
+    ];
 
-            });
+   $(() => {
+       data = Array.from(document.querySelectorAll('#program-list li'))
+           .map(el => {
+               const span = el.querySelector('.ps-list-link span');
+               const text = span.innerHTML.split(',');
+               const [city, locale] = text.slice(-2);
+               const program = text.slice(0, -2).join(',');
+               const output = {program, city, el};
+               if(states.includes(locale)){
+                   output.state = locale;
+               } else {
+                   output.country = locale;
+               }
+               return output;
+           });
 
-        function popIt(selectId, options) {
-            console.log(options);
-            var dropdown = $('#' + selectId);
-            var initialValue = dropdown.data('initial');
+       countries = uniqueSortedArray(data.filter(d => d.country).map(d => d.country));
 
-            $.each(options,
-                function () {
-                    dropdown.append($("<option />").val(this.Id).text(this.Name));
-                });
+       fillList(document.querySelector('#program-state-search-dropdown'), states);
+       fillList(document.querySelector('#program-country-search-dropdown'), countries);
+   });
 
-            if (initialValue !== 0) {
-                dropdown.val(initialValue);
-            }
-        }
+   function nameChanged(){
+       filterProgramList();
+   }
 
-        function popItStates(selectId, options) {
-            var dropdown = $('#' + selectId);
-            var initialValue = dropdown.data('initial');
+   function cityChanged() {
+       filterProgramList();
+   }
 
-            $.each(options,
-                function () {
-                    dropdown.append($("<option />").val(this.Id).text(this.Abbreviation));
-                });
+   function stateChanged() {
+       filterProgramList();
+   }
 
-            if (initialValue !== 0) {
-                dropdown.val(initialValue);
-            }
-        }
+   function countryChanged(){
+       filterProgramList();
+   }
 
-        function filterProgramList() {
-            // Declare variables
-            var input, filter, ul, li, a, i;
-            input = document.getElementById('program-sites-search-input');
-            filter = input.value.toUpperCase();
-            ul = document.getElementById("program-list");
-            li = ul.getElementsByTagName('li');
+   function uniqueSortedArray(arr){
+       return Array.from(new Set(arr)).sort();
+   }
 
-            // Loop through all list items, and hide those who don't match the search query
-            for (i = 0; i < li.length; i++) {
-                a = li[i].getElementsByTagName("span")[0];
-                if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                    li[i].style.display = "";
-                } else {
-                    li[i].style.display = "none";
+   function filterProgramList(){
+     const name = document.querySelector('#program-sites-search-input').value.trim();
+     const city = document.querySelector('#program-city-search-input').value.trim();
+     const state = document.querySelector('#program-state-search-dropdown').value;
+     const country = document.querySelector('#program-country-search-dropdown').value;
+
+     filterList({name, city, state, country});
+   }
+
+   function fillList(el, values){
+       el.innerHTML = '<option value="" selected></option>';
+       values.forEach(value => {
+           const option = document.createElement('option');
+           option.innerHTML = value;
+           el.appendChild(option);
+       });
+   }
+
+    function filterList({name, city, state, country}){
+        city = city.toLowerCase();
+        name = name.toLowerCase();
+
+        data.forEach(i => {
+                if(
+                  i.program.toLowerCase().includes(name)
+                  && i.city.toLowerCase().includes(city)
+                  && (
+                      (i.country === country)
+                      || (i.state === state)
+                      || (!state && !country)
+                  )){
+                    showElement(i);
                 }
-            }
-        }
+                else {
+                    hideElement(i);
+                }
+            });
+    }
+
+    function hideElement({el}){
+        el.style.display = 'none';
+    }
+
+    function showElement({el}){
+        el.style.display = '';
+    }
 
  </script>
 
